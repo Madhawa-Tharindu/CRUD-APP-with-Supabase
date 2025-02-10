@@ -1,5 +1,6 @@
 import supabase from "../config/supabaseClinet"
 import { useEffect, useState } from "react";
+import SmoothieCard from "../components/SmoothieCard";
 
 const Home = () => {
 
@@ -32,9 +33,12 @@ const Home = () => {
       {fetchError && (<p>{fetchError}</p>)}
       {smoothies && (
         <div className="smoothies">
-            {smoothies.map(smoothies => (
-              <p>{smoothies.title}</p>
-            ))}
+          {/* order by buttons */}
+            <div className="smoothie-grid"> 
+              {smoothies.map(smoothies => (
+                <SmoothieCard key={smoothies.id} smoothie={smoothies} />
+              ))}        
+            </div>
         </div>
       )}
     </div>
